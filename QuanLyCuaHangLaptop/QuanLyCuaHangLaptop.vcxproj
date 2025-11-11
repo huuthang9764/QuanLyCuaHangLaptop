@@ -123,11 +123,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="baohanh.h" />
+    <ClInclude Include="danhmuc.h" />
+    <ClInclude Include="hoadon.h" />
+    <ClInclude Include="khachhang.h" />
+    <ClInclude Include="laptop.h" />
+    <ClInclude Include="nhanvien.h" />
+    <ClInclude Include="thongke.h" />
     <ClInclude Include="thuvien.h" />
     <ClInclude Include="xuly.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="baohanh.cpp" />
+    <ClCompile Include="danhmuc.cpp" />
+    <ClCompile Include="hoadon.cpp" />
+    <ClCompile Include="khachhang.cpp" />
+    <ClCompile Include="laptop.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="nhanvien.cpp" />
+    <ClCompile Include="thongke.cpp" />
     <ClCompile Include="xuly.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

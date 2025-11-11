@@ -64,7 +64,7 @@ struct KhachHang {
     char soDT[15];
     char email[50];
     char diaChi[100];
-    DanhSachHoaDon dsHoaDon; // Danh sách lồng (Hybrid model)
+    DanhSachHoaDon dsHoaDon;
 };
 
 struct DanhSachKhachHang {

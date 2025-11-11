@@ -21,6 +21,27 @@
     <ClInclude Include="xuly.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="laptop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="khachhang.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nhanvien.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hoadon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="baohanh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thongke.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="danhmuc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="xuly.cpp">
@@ -28,6 +49,27 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="laptop.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="danhmuc.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="baohanh.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hoadon.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="khachhang.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nhanvien.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thongke.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
