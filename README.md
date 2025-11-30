@@ -135,32 +135,42 @@ main.cpp điều phối chương trình
 
 fake_data.cpp sinh dữ liệu mẫu
 
-📂 Cấu trúc Thư mục
+```bash
 QuanLyCuaHang/
 ├── Header Files/
-│   ├── thuvien.h
-│   ├── xuly.h
-│   ├── fake_data.h
-│   ├── laptop.h
-│   ├── danhmuc.h
-│   ├── hoadon.h
-│   ├── nhanvien.h
-│   ├── khachhang.h
-│   ├── baohanh.h
-│   └── thongke.h
+│   ├── thuvien.h          # Struct, Enum, Node
+│   ├── xuly.h             # Logic xử lý
+│   ├── fake_data.h        # Sinh dữ liệu mẫu
+│   ├── laptop.h           # UI Laptop
+│   ├── danhmuc.h          # UI Danh mục
+│   ├── hoadon.h           # UI Bán hàng
+│   ├── nhanvien.h         # UI Nhân viên
+│   ├── khachhang.h        # UI Khách hàng
+│   ├── baohanh.h          # UI Bảo hành
+│   └── thongke.h          # UI Thống kê
 │
 ├── Source Files/
-│   ├── main.cpp
-│   ├── xuly.cpp
-│   ├── fake_data.cpp
-│   ├── laptop.cpp
-│   ├── hoadon.cpp
-│   └── ... (các file còn lại)
+│   ├── main.cpp           # Menu chính
+│   ├── xuly.cpp           # Xử lý DSLK
+│   ├── fake_data.cpp      # Dữ liệu giả
+│   ├── laptop.cpp         # Giao diện Laptop
+│   ├── hoadon.cpp         # Giao diện Hóa đơn
+│   ├── nhanvien.cpp
+│   ├── khachhang.cpp
+│   ├── danhmuc.cpp
+│   ├── baohanh.cpp
+│   └── thongke.cpp
 │
-└── Data Files/ (tự động tạo khi chạy)
+└── Data Files/            # Tự tạo khi chạy chương trình
     ├── laptops.dat
     ├── hoadon.dat
+    ├── nhanvien.dat
+    ├── khachhang.dat
+    ├── baohanh.dat
+    ├── thongke.dat
     └── ...
+```
+
 
 ⚙️ Hướng dẫn Cài đặt & Chạy
 Yêu cầu
@@ -213,3 +223,4 @@ Dùng cin.ignore() để tránh trôi lệnh khi nhập chuỗi
 Menu điều hướng sử dụng _getch()
 
 Tìm kiếm chuỗi không phân biệt hoa thường (_stricmp)
+
