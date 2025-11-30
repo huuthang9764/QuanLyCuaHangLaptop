@@ -1,162 +1,215 @@
-💻 Laptop Store Management System (C++)
-Hệ thống Quản lý Cửa hàng Laptop - Phiên bản Danh sách Liên kết
-
-Một đồ án C++ Console Application sử dụng cấu trúc dữ liệu nâng cao để quản lý quy trình bán hàng, kho bãi và nhân sự.
-
 📖 Giới thiệu
-Dự án này là một phần mềm quản lý toàn diện cho cửa hàng bán lẻ Laptop. Điểm đặc biệt về mặt kỹ thuật của dự án là việc loại bỏ hoàn toàn mảng (Array) và thay thế bằng cấu trúc Danh sách liên kết Kép (Doubly Linked List) kết hợp với Danh sách lồng nhau (Nested List) để tối ưu hóa việc quản lý bộ nhớ và thao tác dữ liệu động.
+
+Dự án này là một phần mềm quản lý bán lẻ Laptop được xây dựng hoàn toàn bằng C++.
+Điểm đặc biệt của đồ án là không sử dụng mảng (Array) mà thay thế bằng:
+
+Danh sách liên kết kép (Doubly Linked List)
+
+Danh sách lồng nhau (Nested Linked List)
+
+Mục tiêu là tối ưu hóa bộ nhớ, tăng khả năng thêm/xóa động và mô phỏng các nghiệp vụ thực tế của một cửa hàng máy tính.
 
 🚀 Tính năng Nổi bật
 1. 🔐 Hệ thống & Bảo mật
-Đăng nhập: Cơ chế bảo mật mật khẩu (hiển thị *), phân quyền Quản lý (Admin) và Nhân viên (Staff).
 
-Tự động khởi tạo: Tự động tạo tài khoản Admin mặc định (admin/admin) khi chạy lần đầu.
+Đăng nhập với cơ chế ẩn mật khẩu (hiển thị *)
 
-Lưu trữ: Dữ liệu được lưu trữ bền vững (Persistence) qua hệ thống 8 file nhị phân (.dat).
+Phân quyền Quản lý (Admin) & Nhân viên (Staff)
+
+Tự tạo tài khoản Admin mặc định (admin/admin) khi khởi động lần đầu
+
+Dữ liệu lưu trữ bền vững qua 8 file nhị phân (.dat)
 
 2. 📦 Quản lý Kho & Sản phẩm
-Danh mục: Quản lý Thương hiệu (Dell, Asus, Apple...) và Loại sản phẩm (Gaming, Ultrabook...).
 
-Laptop:
+Quản lý Thương hiệu (Dell, Asus, Apple, MSI...)
 
-CRUD (Thêm, Xóa, Sửa) Laptop.
+Quản lý Loại Laptop (Gaming, Ultrabook, Văn phòng,...)
 
-Nhập kho: Cộng dồn số lượng tồn kho.
+Chức năng Laptop:
 
-Cấu hình chi tiết: CPU, RAM, SSD, GPU, Màn hình (Sử dụng Enum).
+CRUD: Thêm / Xóa / Sửa
+
+Nhập kho: Cộng dồn số lượng
+
+Cấu hình chi tiết (CPU, RAM, SSD, GPU, Display)
 
 Tra cứu nâng cao:
 
-Lọc theo Hãng, Loại.
+Lọc theo hãng, loại
 
-Lọc theo Khoảng giá (Min-Max).
+Lọc theo khoảng giá
 
-Tìm kiếm theo Cấu hình (RAM, SSD, Tên CPU).
+Tìm theo cấu hình (RAM, SSD, CPU)
 
 3. 🧾 Nghiệp vụ Bán hàng (POS)
-Lập Hóa đơn:
 
-Tự động sinh Mã hóa đơn.
+Tự sinh Mã hóa đơn
 
-Kiểm tra tồn kho tức thời.
+Kiểm tra tồn kho tức thời
 
-Hỗ trợ Tạo nhanh Khách hàng ngay trong giao diện bán hàng.
+Hỗ trợ tạo nhanh khách hàng mới tại POS
 
-Serial Number: Nhập số Serial cho từng máy bán ra để định danh duy nhất.
+Nhập Serial Number cho từng máy bán ra
 
 Xử lý tự động:
 
-Tự động trừ kho khi thanh toán.
+Trừ kho khi thanh toán
 
-Tự động tạo Phiếu bảo hành kèm theo ngày hết hạn (tính toán theo chính sách bảo hành của từng máy).
+Sinh phiếu bảo hành gắn theo từng máy, có ngày hết hạn theo chính sách
 
 4. 👥 Quản lý Con người
-Nhân sự: Quản lý hồ sơ nhân viên. Khi xóa nhân viên, hệ thống tự động xóa tài khoản liên kết.
 
-Khách hàng: Lưu trữ thông tin và Lịch sử mua hàng (Danh sách hóa đơn được lồng bên trong thông tin khách hàng).
+Nhân viên: Quản lý hồ sơ, khi xóa nhân viên → tự động xóa tài khoản
+
+Khách hàng:
+
+Lưu thông tin cá nhân
+
+Lịch sử mua hàng (Danh sách Hóa đơn lồng bên trong Khách hàng)
 
 5. 📊 Báo cáo & Thống kê
-Doanh thu: Báo cáo chi tiết theo Ngày, Tháng, Năm.
 
-Lợi nhuận: Tính toán lãi gộp dựa trên (Giá Bán - Giá Vốn).
+Doanh thu theo ngày / tháng / năm
 
-Tồn kho: Báo cáo số lượng và giá trị hàng tồn.
+Lợi nhuận (Giá bán – Giá vốn)
 
-Tra cứu Bảo hành: Kiểm tra hạn bảo hành theo Mã máy (Serial) hoặc Khách hàng.
+Tồn kho theo số lượng & giá trị
+
+Tra cứu bảo hành theo:
+
+Mã Serial
+
+Khách hàng
 
 🛠️ Kiến trúc Kỹ thuật (Technical Architecture)
-Dự án áp dụng mô hình 3 Lớp (3-Layer Architecture) kết hợp Module hóa:
-
 1. Cấu trúc Dữ liệu (thuvien.h)
-Sử dụng Danh sách liên kết Kép (Doubly Linked List) với con trỏ head, tail, next, pre.
 
-Cấu trúc Lồng nhau (Nested):
+Doubly Linked List: head, tail, next, pre
 
-KhachHang chứa danh sách HoaDon.
+Nested list:
 
-HoaDon chứa danh sách ChiTietHoaDon.
+KhachHang → danh sách HoaDon
 
-Enum: Sử dụng Enum cho LoaiRAM, LoaiSSD, TrangThai để đảm bảo tính toàn vẹn dữ liệu.
+HoaDon → danh sách ChiTietHoaDon
 
-2. Lớp Xử lý Logic (xuly.h / xuly.cpp)
-Chứa toàn bộ thuật toán: Thêm, Xóa (tháo mắt xích DSLK), Tìm kiếm (Tuần tự), Sắp xếp (Interchange Sort trên Node).
+Enum:
 
-Xử lý File I/O sử dụng Template để tái sử dụng code.
+RAM / SSD / Loại sản phẩm
 
-3. Lớp Giao diện UI (Modules)
-Tách biệt code giao diện (cin/cout) ra khỏi logic xử lý.
+Trạng thái hệ thống
 
-main.cpp: Điều phối luồng chương trình.
+2. Lớp Logic xử lý (xuly.h / xuly.cpp)
 
-laptop.cpp, hoadon.cpp, nhanvien.cpp...: Các module giao diện riêng biệt.
+Chứa toàn bộ thuật toán:
 
-fake_data.cpp: Module sinh dữ liệu giả lập để test (Data Seeding).
+Thêm – Xóa node (unlink DSLK)
+
+Tìm kiếm tuần tự
+
+Sắp xếp Interchange Sort trực tiếp trên Node
+
+File I/O bằng Template để tái sử dụng tối đa
+
+3. Lớp Giao diện (UI Modules)
+
+Tách toàn bộ cin/cout khỏi logic xử lý
+
+Các module:
+
+laptop.cpp
+
+danhmuc.cpp
+
+hoadon.cpp
+
+khachhang.cpp
+
+nhanvien.cpp
+
+baohanh.cpp
+
+thongke.cpp
+
+main.cpp điều phối chương trình
+
+fake_data.cpp sinh dữ liệu mẫu
 
 📂 Cấu trúc Thư mục
 QuanLyCuaHang/
 ├── Header Files/
-│   ├── thuvien.h       # Định nghĩa Struct, Enum, Node
-│   ├── xuly.h          # Khai báo hàm logic (API)
-│   ├── fake_data.h     # Khai báo hàm sinh dữ liệu mẫu
-│   ├── laptop.h        # UI Module Laptop
-│   ├── danhmuc.h       # UI Module Danh mục
-│   ├── hoadon.h        # UI Module Bán hàng
-│   ├── nhanvien.h      # UI Module Nhân sự
-│   ├── khachhang.h     # UI Module Khách hàng
-│   ├── baohanh.h       # UI Module Bảo hành
-│   └── thongke.h       # UI Module Thống kê
+│   ├── thuvien.h
+│   ├── xuly.h
+│   ├── fake_data.h
+│   ├── laptop.h
+│   ├── danhmuc.h
+│   ├── hoadon.h
+│   ├── nhanvien.h
+│   ├── khachhang.h
+│   ├── baohanh.h
+│   └── thongke.h
 │
 ├── Source Files/
-│   ├── main.cpp        # Hàm main(), Menu chính
-│   ├── xuly.cpp        # Triển khai logic DSLK
-│   ├── fake_data.cpp   # Logic sinh dữ liệu mẫu
-│   ├── laptop.cpp      # Code giao diện Laptop
-│   ├── hoadon.cpp      # Code giao diện Hóa đơn
-│   └── ... (các file .cpp tương ứng với .h)
+│   ├── main.cpp
+│   ├── xuly.cpp
+│   ├── fake_data.cpp
+│   ├── laptop.cpp
+│   ├── hoadon.cpp
+│   └── ... (các file còn lại)
 │
-└── Data Files/ (Tự động tạo khi chạy)
+└── Data Files/ (tự động tạo khi chạy)
     ├── laptops.dat
     ├── hoadon.dat
     └── ...
+
 ⚙️ Hướng dẫn Cài đặt & Chạy
-Yêu cầu hệ thống
-IDE: Visual Studio 2019/2022 (Khuyên dùng) hoặc Dev-C++.
+Yêu cầu
 
-Ngôn ngữ: C++11 trở lên.
+Windows + Visual Studio 2019/2022 (khuyên dùng)
 
-Các bước thực hiện
-Clone/Download toàn bộ source code.
+C++11 trở lên
 
-Mở project trong Visual Studio.
+Cách chạy
 
-Quan trọng: Vào thư mục chứa file .exe (thường là x64/Debug), XÓA TẤT CẢ các file có đuôi .dat cũ (nếu có) để tránh lỗi không tương thích dữ liệu.
+Clone/Download source code
 
-Nhấn Build -> Rebuild Solution.
+Mở project bằng Visual Studio
 
-Chạy chương trình (F5).
+Xóa tất cả file .dat cũ trong thư mục chứa file .exe
+(thường là x64/Debug)
 
-Trong lần chạy đầu tiên, hệ thống sẽ tự động kích hoạt fake_data để sinh ra:
+Build → Rebuild Solution
 
-50 Laptop mẫu.
+Chạy chương trình (F5)
 
-100 Khách hàng mẫu.
+Lần chạy đầu tiên hệ thống sẽ tự động tạo:
 
-200 Hóa đơn giao dịch lịch sử.
+50 Laptop mẫu
 
-Tài khoản Đăng nhập Mặc định
-Admin (Quyền cao nhất):
+100 Khách hàng mẫu
 
+200 Hóa đơn lịch sử
+
+🔑 Tài khoản Đăng nhập Mặc định
+Admin
+```cpp
 User: admin
-
 Pass: admin
+```
 
-Nhân viên:
 
+Nhân viên
+```cpp
 User: user1
-
 Pass: 123
+```
+
+
 
 📝 Ghi chú quan trọng
-Để tránh lỗi trôi lệnh khi nhập chuỗi, chương trình sử dụng cin.ignore() một cách chiến lược và dùng _getch() cho các menu điều hướng.
 
-Khi tìm kiếm, chương trình sử dụng _stricmp để so sánh chuỗi không phân biệt hoa thường (ví dụ: gõ "dell", "DELL", "Dell" đều được).
+Dùng cin.ignore() để tránh trôi lệnh khi nhập chuỗi
+
+Menu điều hướng sử dụng _getch()
+
+Tìm kiếm chuỗi không phân biệt hoa thường (_stricmp)
