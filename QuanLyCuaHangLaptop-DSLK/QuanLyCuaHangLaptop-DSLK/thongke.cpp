@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <iomanip>
 
-using namespace std; // Thêm namespace std để dùng cout, cin
+using namespace std; 
 
 // =================== CÁC HÀM HỖ TRỢ TÍNH TOÁN ===================
 
@@ -205,7 +205,6 @@ void MenuLoiNhuan(const DanhSachHoaDon& dshd, const DanhSachLaptop& dslt) {
 
 // =================== MENU CHÍNH THỐNG KÊ ===================
 
-// SỬA LỖI QUAN TRỌNG: Đổi tên thành MenuThongKe (Hoa) và thêm const vào dslt
 void MenuThongKe(DanhSachHoaDon& dshd, const DanhSachLaptop& dslt) {
     char chon;
     do {

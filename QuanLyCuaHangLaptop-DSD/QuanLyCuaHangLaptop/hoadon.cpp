@@ -41,9 +41,8 @@ void InChiTietGioHang(const HoaDon& hd, DanhSachLaptop& dsLT) {
         << setw(15) << "Don Gia" << endl;
     cout << "------------------------------------------------------------------------------------------------\n";
 
-    // [THAY ĐỔI]: Duyệt mảng Chi Tiết Hóa Đơn
     for (int i = 0; i < hd.dsChiTiet.soLuong; i++) {
-        ChiTietHoaDon ct = hd.dsChiTiet.ds[i]; // Lấy phần tử mảng
+        ChiTietHoaDon ct = hd.dsChiTiet.ds[i]; 
         Laptop* lt = TimKiemLaptop(dsLT, ct.maLaptop);
 
         cout << left << setw(5) << (i + 1)
@@ -58,7 +57,7 @@ void InChiTietGioHang(const HoaDon& hd, DanhSachLaptop& dsLT) {
 void XuatDanhSachHoaDon(const DanhSachHoaDon& dsHD) {
     if (dsHD.soLuong == 0) { cout << "Trong!\n"; return; }
     cout << "\n--- DANH SACH HOA DON ---\n";
-    // [THAY ĐỔI]: Duyệt mảng Hóa Đơn
+
     for (int i = 0; i < dsHD.soLuong; i++) {
         cout << dsHD.ds[i].maHD << " - " << dsHD.ds[i].maKH
             << " - " << DinhDangTien(dsHD.ds[i].tongTien) << endl;
@@ -68,7 +67,6 @@ void XuatDanhSachHoaDon(const DanhSachHoaDon& dsHD) {
 // =================== CHỨC NĂNG LẬP HÓA ĐƠN ===================
 
 void LapHoaDonMoi(DanhSachHoaDon& dsHD, DanhSachKhachHang& dsKH, DanhSachLaptop& dsLT, DanhSachBaoHanh& dsBH, TaiKhoan* tkCurrent) {
-    // [THAY ĐỔI]: Kiểm tra tràn mảng Hóa Đơn trước
     if (dsHD.soLuong >= MAX_HOADON) {
         cout << "Loi: Bo nho hoa don da day (" << MAX_HOADON << "). Khong the lap them.\n";
         system("pause"); return;
@@ -80,7 +78,7 @@ void LapHoaDonMoi(DanhSachHoaDon& dsHD, DanhSachKhachHang& dsKH, DanhSachLaptop&
 
     // 1. KHỞI TẠO
     HoaDon hdMoi;
-    hdMoi.dsChiTiet.soLuong = 0; // Reset số lượng chi tiết về 0
+    hdMoi.dsChiTiet.soLuong = 0; 
     hdMoi.tongTien = 0;
     hdMoi.trangThai = 1;
     hdMoi.ngayLap = LayNgayHienTai();
@@ -181,7 +179,6 @@ void LapHoaDonMoi(DanhSachHoaDon& dsHD, DanhSachKhachHang& dsKH, DanhSachLaptop&
 
     char xacNhan; cout << "\nXac nhan thanh toan? (y/n): "; cin >> xacNhan;
     if (xacNhan == 'y' || xacNhan == 'Y') {
-        // [THAY ĐỔI]: Duyệt mảng Chi Tiết để trừ kho và tạo bảo hành
         for (int i = 0; i < hdMoi.dsChiTiet.soLuong; i++) {
             ChiTietHoaDon ct = hdMoi.dsChiTiet.ds[i];
 

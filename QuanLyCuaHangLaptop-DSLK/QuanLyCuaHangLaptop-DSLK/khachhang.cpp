@@ -66,14 +66,10 @@ void MenuQuanLyKhachHang(DanhSachKhachHang& dsKH) {
 
         char ma[10];
 
-        // [QUAN TRỌNG]: Không khai báo 'KhachHang kh;' ở đây nữa để tránh tràn Stack
-
         switch (chon) {
         case '1': {
             // Cấp phát động để tránh Stack Overflow
             KhachHang* khTam = new KhachHang;
-
-            // [DSLK]: BẮT BUỘC khởi tạo danh sách lồng nhau bằng NULL
             khTam->dsHoaDon.head = NULL;
             khTam->dsHoaDon.tail = NULL;
             khTam->dsHoaDon.soLuong = 0;
@@ -107,13 +103,10 @@ void MenuQuanLyKhachHang(DanhSachKhachHang& dsKH) {
 
             if (found) {
                 KhachHang* khTam = new KhachHang;
-
-                // [Logic Bảo Toàn Dữ Liệu]:
                 // 1. Copy toàn bộ dữ liệu cũ (bao gồm cả danh sách hóa đơn) sang biến tạm
                 *khTam = *found;
 
                 // 2. Nhập thông tin cá nhân mới đè lên biến tạm
-                // (Hàm nhập KHÔNG ĐƯỢC reset dsHoaDon.head = NULL)
                 NhapThongTinKhachHang(khTam);
 
                 // 3. Đảm bảo mã giữ nguyên (tránh người dùng nhập mã khác)

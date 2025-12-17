@@ -2,8 +2,7 @@
 #ifndef UI_BAOHANH_H
 #define UI_BAOHANH_H
 
-#include "xuly.h" // Đã bao gồm thuvien.h (Array version)
-
+#include "xuly.h" 
 void MenuQuanLyBaoHanh(DanhSachBaoHanh& dsBH);
 
 // Các hàm tra cứu

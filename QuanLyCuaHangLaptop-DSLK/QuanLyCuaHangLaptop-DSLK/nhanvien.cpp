@@ -124,7 +124,7 @@ void MenuQuanLyTaiKhoan(DanhSachTaiKhoan& dsTK, DanhSachNhanVien& dsNV) {
             TaiKhoan* tk = TimKiemTaiKhoan(dsTK, user);
             if (tk) {
                 tk->trangThai = (tk->trangThai == TK_HOAT_DONG) ? TK_KHOA : TK_HOAT_DONG;
-                SuaTaiKhoan(dsTK, *tk); // Cập nhật logic
+                SuaTaiKhoan(dsTK, *tk);
                 cout << "Da doi trang thai!\n";
             }
             else cout << "Khong tim thay!\n";
@@ -177,7 +177,7 @@ void MenuQuanLyNhanVien(DanhSachNhanVien& dsNV, DanhSachTaiKhoan& dsTK) {
             NhanVien* nv = TimKiemNhanVien(dsNV, ma);
             if (nv) {
                 NhanVien moi = NhapThongTinNhanVien();
-                strcpy_s(moi.maNV, ma); // Giữ mã
+                strcpy_s(moi.maNV, ma); 
                 SuaNhanVien(dsNV, moi);
                 cout << "Sua thanh cong!\n";
             }

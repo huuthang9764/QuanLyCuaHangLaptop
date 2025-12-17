@@ -81,7 +81,7 @@ void TraCuuBaoHanhTheoSerial(const DanhSachBaoHanh& dsBH) {
     InTieuDeBaoHanh();
 
     bool found = false;
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsBH.soLuong; i++) {
         if (_stricmp(dsBH.ds[i].serial, serial) == 0) {
             InMotDongBaoHanh(dsBH.ds[i]);
@@ -103,7 +103,7 @@ void TraCuuBaoHanhTheoMaLaptop(const DanhSachBaoHanh& dsBH) {
     InTieuDeBaoHanh();
 
     bool found = false;
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsBH.soLuong; i++) {
         if (_stricmp(dsBH.ds[i].maLaptop, maLT) == 0) {
             InMotDongBaoHanh(dsBH.ds[i]);
@@ -123,7 +123,7 @@ void TraCuuBaoHanhTheoKhachHang(const DanhSachBaoHanh& dsBH) {
     InTieuDeBaoHanh();
 
     bool found = false;
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsBH.soLuong; i++) {
         if (_stricmp(dsBH.ds[i].maKH, maKH) == 0) {
             InMotDongBaoHanh(dsBH.ds[i]);
@@ -141,7 +141,7 @@ void XuatTatCaBaoHanh(const DanhSachBaoHanh& dsBH) {
     }
     cout << "\nDANH SACH TOAN BO PHIEU BAO HANH:\n";
     InTieuDeBaoHanh();
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsBH.soLuong; i++) {
         InMotDongBaoHanh(dsBH.ds[i]);
     }

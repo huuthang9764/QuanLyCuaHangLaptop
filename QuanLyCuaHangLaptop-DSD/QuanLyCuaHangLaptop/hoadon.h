@@ -2,7 +2,7 @@
 #ifndef UI_HOADON_H
 #define UI_HOADON_H
 
-#include "xuly.h" // Đã bao gồm thuvien.h (phiên bản mảng)
+#include "xuly.h" 
 
 // Menu chính quản lý hóa đơn (Bán hàng)
 void MenuQuanLyHoaDon(

@@ -121,25 +121,6 @@ void RunFullBenchmark(DanhSachLaptop& dsls) {
 
     SapXepLaptop_TheoTen(dsls);
 
-    // [1A] LINEAR SEARCH - NAME
-    /*DoBenchmark("  [A] Linear Search (Name): ", [&]() {
-        char tenCanTim[50];
-        int currentTarget = 0;
-        int k = 0;
-
-        for (NodeLaptop* p = dsls.head; p != NULL; p = p->next) {
-            if (currentTarget >= MAXTEST) break;
-
-            if (k == indexTest[currentTarget]) {
-                strcpy(tenCanTim, p->data.tenLaptop);
-
-                LinearSearch_Name(dsls, tenCanTim);
-
-                while (currentTarget < MAXTEST && indexTest[currentTarget] == k) currentTarget++;
-            }
-            k++;
-        }
-        });*/
 
     char tenCanTim[50];
     int currentTarget = 0;
@@ -160,7 +141,7 @@ void RunFullBenchmark(DanhSachLaptop& dsls) {
         }
         k++;
     }
-    cout << "\n Thoi gian trung binh cua 10 lan do " << (double)time / 10 << endl;cout << (double)time/10;
+    cout << "\n Thoi gian trung binh cua 10 lan do " << (double)time / 10 << " nanoseconds" << endl;
     // [1B] BINARY SEARCH - NAME
     cout << "  [B] Binary Search (Name):   N/A (DSLK khong ho tro)\n";
 

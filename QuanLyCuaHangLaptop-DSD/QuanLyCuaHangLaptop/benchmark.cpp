@@ -133,7 +133,7 @@ void RunFullBenchmark(DanhSachLaptop& dsls) {
             while (currentTarget < MAXTEST && indexTest[currentTarget] == k) currentTarget++;
         }
     }
-    cout << "\n Thoi gian trung binh cua 10 lan do " << (double)time / 10 << endl;
+    cout << "\n Thoi gian trung binh cua 10 lan do " << (double)time / 10 <<" nanoseconds " << endl;
     long long t1_LinearName = DoBenchmark("  [A] Linear Search (Name): ", [&]() {
         char tenCanTim[50];
         int currentTarget = 0;
@@ -212,6 +212,6 @@ void RunFullBenchmark(DanhSachLaptop& dsls) {
     if (t2_BinaryID > 0)
         cout << "  >> ID Ratio (Linear/Binary):   " << (double)t2_LinearID / t2_BinaryID << "x\n";
 
-    delete[] indexTest; // Dọn dẹp
+    delete[] indexTest;
     cout << "==================================================================\n\n";
 }

@@ -9,8 +9,6 @@
 #include "benchmark.h"
 
 using namespace std;
-//auto total = 0;
-
 
 string LayChuoiRAM(LoaiRAM ram) {
     return to_string((int)ram) + "GB";

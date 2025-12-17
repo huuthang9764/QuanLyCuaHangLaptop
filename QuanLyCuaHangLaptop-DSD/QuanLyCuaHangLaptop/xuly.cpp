@@ -201,8 +201,8 @@ Laptop* TimKiemNhiPhan_TheoTen(const DanhSachLaptop& dsls, const char tenCanTim[
 }
 
 bool ThemLaptop(DanhSachLaptop& dsls, Laptop ltMoi) {
-    if (dsls.soLuong >= MAX_LAPTOP) return false; // Tràn mảng
-    if (TimKiemLaptop(dsls, ltMoi.maLaptop) != NULL) return false; // Trùng mã
+    if (dsls.soLuong >= MAX_LAPTOP) return false;
+    if (TimKiemLaptop(dsls, ltMoi.maLaptop) != NULL) return false; 
 
     dsls.ds[dsls.soLuong] = ltMoi;
     dsls.soLuong++;
@@ -220,7 +220,6 @@ bool XoaLaptop(DanhSachLaptop& dsls, const char maLaptop[10]) {
 
     if (viTri == -1) return false;
 
-    // Dời mảng sang trái
     for (int i = viTri; i < dsls.soLuong - 1; i++) {
         dsls.ds[i] = dsls.ds[i + 1];
     }
@@ -256,7 +255,7 @@ bool ThemKhachHang(DanhSachKhachHang& dskh, KhachHang khMoi) {
     if (dskh.soLuong >= MAX_KHACHHANG) return false;
     if (TimKiemKhachHang(dskh, khMoi.maKH)) return false;
 
-    khMoi.dsHoaDon.soLuong = 0; // Khởi tạo danh sách hóa đơn rỗng
+    khMoi.dsHoaDon.soLuong = 0;
     dskh.ds[dskh.soLuong] = khMoi;
     dskh.soLuong++;
     return true;
@@ -281,7 +280,6 @@ bool XoaKhachHang(DanhSachKhachHang& dskh, const char maKH[10]) {
 bool SuaKhachHang(DanhSachKhachHang& dskh, KhachHang khMoi) {
     KhachHang* kh = TimKiemKhachHang(dskh, khMoi.maKH);
     if (!kh) return false;
-    // Giữ lại danh sách hóa đơn cũ
     DanhSachHoaDon hdCu = kh->dsHoaDon;
     *kh = khMoi;
     kh->dsHoaDon = hdCu;
@@ -301,10 +299,8 @@ bool ThemHoaDon(DanhSachHoaDon& dsHD_ToanCuc, DanhSachKhachHang& dskh, HoaDon hd
     if (dsHD_ToanCuc.soLuong >= MAX_HOADON) return false;
     if (TimKiemHoaDon(dsHD_ToanCuc, hdMoi.maHD)) return false;
 
-    // 1. Thêm vào danh sách toàn cục
     dsHD_ToanCuc.ds[dsHD_ToanCuc.soLuong++] = hdMoi;
 
-    // 2. Thêm vào danh sách con của Khách Hàng
     KhachHang* kh = TimKiemKhachHang(dskh, hdMoi.maKH);
     if (kh) {
         if (kh->dsHoaDon.soLuong < MAX_HOADON) {
@@ -341,7 +337,7 @@ bool XoaNhanVien(DanhSachNhanVien& dsnv, DanhSachTaiKhoan& dstk, const char maNV
     for (int i = 0; i < dstk.soLuong; i++) {
         if (_stricmp(dstk.ds[i].maNV, maNV) == 0) {
             XoaTaiKhoan(dstk, dstk.ds[i].tenDangNhap);
-            i--; // Lùi chỉ số vì mảng đã dồn
+            i--; 
         }
     }
 
@@ -463,11 +459,10 @@ void SapXepLaptop_TheoTen(DanhSachLaptop& dsls) {
     for (int i = 0; i < dsls.soLuong - 1; i++) {
         int minIdx = i;
         for (int j = i + 1; j < dsls.soLuong; j++) {
-            // Tìm phần tử nhỏ nhất
+
             if (strcmp(dsls.ds[j].tenLaptop, dsls.ds[minIdx].tenLaptop) < 0)
                 minIdx = j;
         }
-        // Chỉ swap 1 lần nếu tìm thấy phần tử nhỏ hơn
         if (minIdx != i) Swap(dsls.ds[i], dsls.ds[minIdx]);
     }
 }
@@ -515,7 +510,7 @@ void SapXepHoaDon_TheoNgay(DanhSachHoaDon& dsHD) {
 
 void SapXepHoaDon_TheoTongTien(DanhSachHoaDon& dsHD) {
     for (int i = 0; i < dsHD.soLuong - 1; i++) {
-        int maxIdx = i; // Sắp xếp giảm dần (Tiền nhiều lên đầu)
+        int maxIdx = i; 
         for (int j = i + 1; j < dsHD.soLuong; j++) {
             if (dsHD.ds[j].tongTien > dsHD.ds[maxIdx].tongTien)
                 maxIdx = j;

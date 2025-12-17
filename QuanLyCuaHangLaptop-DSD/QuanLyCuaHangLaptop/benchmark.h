@@ -19,10 +19,10 @@ using namespace std::chrono;
 template <typename Func>
 long long DoBenchmark(const char* label, Func func) {
     cout << label;
-    cout.flush();  // Ngăn cout dính vào thời gian đo
+    cout.flush();  
 
     auto start = chrono::high_resolution_clock::now();
-    func();                    // ❗ CHỈ chứa thuật toán cần đo
+    func();                    
     auto end = chrono::high_resolution_clock::now();
 
     auto duration = chrono::duration_cast<chrono::nanoseconds>(end - start).count();
@@ -31,7 +31,6 @@ long long DoBenchmark(const char* label, Func func) {
     return duration;
 }
 
-// Các hàm chạy benchmark cũ
 void RunFullBenchmark(DanhSachLaptop& dsls);
 
 #endif

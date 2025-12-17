@@ -100,7 +100,7 @@ struct KhachHang {
     char soDT[15];
     char email[50];
     char diaChi[100];
-    DanhSachHoaDon dsHoaDon; // Lồng danh sách hóa đơn (head, tail, sl)
+    DanhSachHoaDon dsHoaDon; 
 };
 
 struct NodeKhachHang {

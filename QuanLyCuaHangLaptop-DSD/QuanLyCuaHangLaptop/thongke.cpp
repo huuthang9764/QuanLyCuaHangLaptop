@@ -7,7 +7,6 @@ using namespace std;
 
 // =================== CÁC HÀM HỖ TRỢ TÍNH TOÁN ===================
 
-// Hàm này cần danh sách Laptop để tra giá vốn
 double tinhLoiNhuanChiTietHoaDon(const DanhSachLaptop& dSLT, const ChiTietHoaDon& cTHD) {
     Laptop* pLaptop = TimKiemLaptop(dSLT, cTHD.maLaptop);
     if (pLaptop != NULL) {
@@ -26,7 +25,6 @@ void XuatBaoCaoDoanhThuNgay(Date ngayCanLoc, const DanhSachHoaDon& g_dsHoaDonToa
     cout << left << setw(10) << "Ma HD" << setw(15) << "Ma NV" << setw(20) << "Tong Tien" << endl;
     cout << "--------------------------------------------------\n";
 
-    // [THAY ĐỔI]: Duyệt mảng Hóa Đơn
     for (int i = 0; i < g_dsHoaDonToanCuc.soLuong; i++) {
         HoaDon hd = g_dsHoaDonToanCuc.ds[i];
         if (hd.ngayLap.ngay == ngayCanLoc.ngay && hd.ngayLap.thang == ngayCanLoc.thang && hd.ngayLap.nam == ngayCanLoc.nam) {
@@ -50,7 +48,6 @@ void XuatBaoCaoDoanhThuThang(Date ngayCanLoc, const DanhSachHoaDon& g_dsHoaDonTo
     cout << left << setw(10) << "Ma HD" << setw(15) << "Ngay" << setw(20) << "Tong Tien" << endl;
     cout << "--------------------------------------------------\n";
 
-    // [THAY ĐỔI]: Duyệt mảng
     for (int i = 0; i < g_dsHoaDonToanCuc.soLuong; i++) {
         HoaDon hd = g_dsHoaDonToanCuc.ds[i];
         if (hd.ngayLap.thang == ngayCanLoc.thang && hd.ngayLap.nam == ngayCanLoc.nam) {
@@ -75,7 +72,6 @@ void XuatBaoCaoDoanhThuNam(Date ngayCanLoc, const DanhSachHoaDon& g_dsHoaDonToan
     cout << left << setw(10) << "Ma HD" << setw(15) << "Thang" << setw(20) << "Tong Tien" << endl;
     cout << "--------------------------------------------------\n";
 
-    // [THAY ĐỔI]: Duyệt mảng
     for (int i = 0; i < g_dsHoaDonToanCuc.soLuong; i++) {
         HoaDon hd = g_dsHoaDonToanCuc.ds[i];
         if (hd.ngayLap.nam == ngayCanLoc.nam) {
@@ -99,7 +95,7 @@ void XuatBaoCaoTonKho(const DanhSachLaptop& g_dsLaptop) {
     cout << "-------------------------------------------------\n";
 
     long long tongSL = 0;
-    // [THAY ĐỔI]: Duyệt mảng Laptop
+
     for (int i = 0; i < g_dsLaptop.soLuong; i++) {
         Laptop lt = g_dsLaptop.ds[i];
         cout << left << setw(10) << lt.maLaptop
@@ -115,12 +111,11 @@ void XuatBaoCaoTonKho(const DanhSachLaptop& g_dsLaptop) {
 
 double TinhLoiNhuanNgay(const DanhSachLaptop& dslt, const DanhSachHoaDon& dshd, Date ngayCanLoc) {
     double tong = 0;
-    // [THAY ĐỔI]: Duyệt mảng Hóa Đơn
+
     for (int i = 0; i < dshd.soLuong; i++) {
         HoaDon hd = dshd.ds[i];
         if (hd.ngayLap.ngay == ngayCanLoc.ngay && hd.ngayLap.thang == ngayCanLoc.thang && hd.ngayLap.nam == ngayCanLoc.nam) {
 
-            // [THAY ĐỔI]: Duyệt mảng Chi Tiết (Lồng trong Hóa Đơn)
             for (int j = 0; j < hd.dsChiTiet.soLuong; j++) {
                 tong += tinhLoiNhuanChiTietHoaDon(dslt, hd.dsChiTiet.ds[j]);
             }

@@ -27,7 +27,6 @@ void XuatDanhSachThuongHieu(const DanhSachThuongHieu& dsth) {
     cout << "| " << left << setw(10) << "Ma TH" << "| " << left << setw(20) << "Ten Thuong Hieu" << "| " << left << setw(15) << "Quoc Gia" << " |" << endl;
     cout << "------------------------------------------------------" << endl;
 
-    // [THAY ĐỔI]: Duyệt mảng
     for (int i = 0; i < dsth.soLuong; i++) {
         cout << "| " << left << setw(10) << dsth.ds[i].maThuongHieu
             << "| " << setw(20) << dsth.ds[i].tenThuongHieu
@@ -42,7 +41,6 @@ void XuatDanhSachLoai(const DanhSachLoai& dsl) {
     cout << "| " << left << setw(10) << "Ma Loai" << "| " << left << setw(30) << "Ten Loai" << " |" << endl;
     cout << "---------------------------------------------" << endl;
 
-    // [THAY ĐỔI]: Duyệt mảng
     for (int i = 0; i < dsl.soLuong; i++) {
         cout << "| " << left << setw(10) << dsl.ds[i].maLoai
             << "| " << setw(30) << dsl.ds[i].tenLoai << " |" << endl;

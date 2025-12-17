@@ -2,7 +2,7 @@
 #ifndef TEST_DATA_H
 #define TEST_DATA_H
 
-#include "thuvien.h" // Phiên bản DSLK
+#include "thuvien.h" 
 #include "xuly.h"
 
 // Hàm sinh dữ liệu mẫu tự động cho DSLK

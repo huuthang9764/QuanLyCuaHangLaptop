@@ -82,7 +82,6 @@ void KhoiTaoDuLieuTuDong(
     }
 
     // --- 2. LAPTOP ---
-    // Mảng tạm chứa con trỏ để dễ truy xuất ngẫu nhiên khi bán hàng
     Laptop* arrLaptop[MAX_LAPTOP];
     int countLT = 0;
 
@@ -90,7 +89,7 @@ void KhoiTaoDuLieuTuDong(
     const char* GPU_LIST[] = { "RTX 3050", "RTX 4060", "RTX 4090", "GTX 1650", "Intel Iris Xe", "Radeon 680M" };
 
     for (int i = 1; i <= SL_LAPTOP_GEN; i++) {
-        // Kiểm tra tràn mảng
+
         if (dsls.soLuong >= MAX_LAPTOP) break;
 
         Laptop lt;
@@ -104,7 +103,7 @@ void KhoiTaoDuLieuTuDong(
 
         lt.giaVon = Rand(10, 40) * 1000000;
         lt.giaBan = lt.giaVon + Rand(2, 8) * 1000000;
-        lt.soLuongTon = Rand(50, 200); // Tồn kho nhiều để bán
+        lt.soLuongTon = Rand(50, 200);
         lt.thoiGianBaoHanh = (Rand(0, 1) == 0) ? 12 : 24;
         lt.trangThai = CON_HANG;
 
@@ -119,7 +118,6 @@ void KhoiTaoDuLieuTuDong(
 
         ThemLaptop(dsls, lt);
 
-        // [MẢNG]: Lưu địa chỉ phần tử vừa thêm (ở vị trí soLuong - 1)
         arrLaptop[countLT++] = &dsls.ds[dsls.soLuong - 1];
     }
 
@@ -203,7 +201,6 @@ void KhoiTaoDuLieuTuDong(
         hd.trangThai = 1;
         hd.tongTien = 0;
 
-        // [MẢNG] Reset số lượng chi tiết về 0
         hd.dsChiTiet.soLuong = 0;
 
         // Mua 1-3 món
@@ -224,7 +221,6 @@ void KhoiTaoDuLieuTuDong(
             ct.donGia = (long)ltMua->giaBan;
             ct.thanhTien = ct.donGia;
 
-            // Trừ kho thật (Trên mảng chính)
             ltMua->soLuongTon--;
 
             // Thêm vào mảng chi tiết

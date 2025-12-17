@@ -49,7 +49,6 @@ int main() {
     }
 
     // 3. CHẠY BENCHMARK (Đo hiệu năng DSLK)
-    // [QUAN TRỌNG] Chỉ chạy khi có dữ liệu
     if (g_dsLaptop.head != NULL) {
         cout << "\n=== BAT DAU BENCHMARK (LINKED LIST VERSION) ===\n";
         RunFullBenchmark(g_dsLaptop);
@@ -154,7 +153,7 @@ void XuLyDangNhap() {
 
         TaiKhoan tk;
         strcpy_s(tk.tenDangNhap, "admin");
-        strcpy_s(tk.matKhau, "admin"); // Pass mac dinh
+        strcpy_s(tk.matKhau, "admin"); 
         strcpy_s(tk.maNV, "NV001");
         tk.quyen = QUAN_LY;
         tk.trangThai = TK_HOAT_DONG;

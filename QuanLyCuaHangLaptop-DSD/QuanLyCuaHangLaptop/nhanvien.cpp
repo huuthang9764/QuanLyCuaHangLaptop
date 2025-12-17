@@ -44,7 +44,6 @@ void XuatDanhSachTaiKhoan(const DanhSachTaiKhoan& dsTK) {
         << "| " << left << setw(15) << "Trang Thai" << " |\n";
     cout << "-------------------------------------------------------------\n";
 
-    // [THAY ĐỔI]: Duyệt mảng
     for (int i = 0; i < dsTK.soLuong; i++) {
         cout << "| " << left << setw(20) << dsTK.ds[i].tenDangNhap
             << "| " << left << setw(10) << dsTK.ds[i].maNV
@@ -127,7 +126,6 @@ void MenuQuanLyTaiKhoan(DanhSachTaiKhoan& dsTK, DanhSachNhanVien& dsNV) {
             TaiKhoan* tk = TimKiemTaiKhoan(dsTK, user);
             if (tk) {
                 tk->trangThai = (tk->trangThai == TK_HOAT_DONG) ? TK_KHOA : TK_HOAT_DONG;
-                // Với mảng, con trỏ tk trỏ trực tiếp vào vùng nhớ mảng nên sửa là được luôn
                 cout << "Da doi trang thai!\n";
             }
             else cout << "Khong tim thay!\n";
@@ -181,7 +179,7 @@ void MenuQuanLyNhanVien(DanhSachNhanVien& dsNV, DanhSachTaiKhoan& dsTK) {
             NhanVien* nv = TimKiemNhanVien(dsNV, ma);
             if (nv) {
                 NhanVien moi = NhapThongTinNhanVien();
-                strcpy_s(moi.maNV, ma); // Giữ mã
+                strcpy_s(moi.maNV, ma);
                 SuaNhanVien(dsNV, moi);
                 cout << "Sua thanh cong!\n";
             }

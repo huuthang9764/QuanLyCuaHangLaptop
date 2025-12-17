@@ -3,8 +3,8 @@
 #include "xuly.h" 
 #include <iostream>
 #include <cstdio>
-#include <cstdlib> // Cho rand()
-#include <ctime>   // Cho time()
+#include <cstdlib> 
+#include <ctime>  
 
 using namespace std;
 

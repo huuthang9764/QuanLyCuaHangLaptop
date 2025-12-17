@@ -8,7 +8,7 @@
 
 using namespace std;
 
-// [MACRO AN TOÀN]: Tránh lỗi in ký tự lạ
+
 #define FIX_CSTR(arr) arr[sizeof(arr) - 1] = '\0'
 
 // =================== 0. HÀM HỖ TRỢ KHỞI TẠO ===================
@@ -146,7 +146,6 @@ void DocDuLieu(
         f.close(); \
     }
 
-    // Đọc Laptop có fix chuỗi
     f.open("laptops.dat", ios::binary);
     if (f.is_open()) {
         f.read((char*)&n, sizeof(int));
@@ -654,13 +653,11 @@ void SapXepLaptop_TheoID(DanhSachLaptop& dsls) {
 void SapXepLaptop_TheoTen(DanhSachLaptop& dsls) {
     for (NodeLaptop* p = dsls.head; p != NULL; p = p->next) {
         NodeLaptop* minNode = p;
-        // Duyệt tìm Node nhỏ nhất trong phần còn lại
         for (NodeLaptop* q = p->next; q != NULL; q = q->next) {
             if (strcmp(q->data.tenLaptop, minNode->data.tenLaptop) < 0) {
                 minNode = q;
             }
         }
-        // Hoán đổi dữ liệu nếu tìm thấy
         if (minNode != p) SwapData(p->data, minNode->data);
     }
 }
@@ -711,7 +708,7 @@ void SapXepHoaDon_TheoNgay(DanhSachHoaDon& dsHD) {
 
 void SapXepHoaDon_TheoTongTien(DanhSachHoaDon& dsHD) {
     for (NodeHoaDon* p = dsHD.head; p != NULL; p = p->next) {
-        NodeHoaDon* maxNode = p; // Giảm dần
+        NodeHoaDon* maxNode = p;
         for (NodeHoaDon* q = p->next; q != NULL; q = q->next) {
             if (q->data.tongTien > maxNode->data.tongTien) {
                 maxNode = q;
@@ -744,8 +741,6 @@ string DinhDangTien(long long tien) {
 NodeLaptop* LayNodeTaiViTri(const DanhSachLaptop& dsls, int index) {
     if (index < 0 || index >= dsls.soLuong) return NULL;
 
-    // Tối ưu nhẹ: Nếu index ở nửa đầu thì đi từ Head, nửa sau thì đi từ Tail
-    // (Vì là DSLK đôi)
     if (index < dsls.soLuong / 2) {
         NodeLaptop* k = dsls.head;
         for (int i = 0; i < index; i++) k = k->next;
@@ -766,7 +761,7 @@ Laptop* TimKiemNhiPhan_TheoTen(const DanhSachLaptop& dsls, const char tenCanTim[
     while (left <= right) {
         int mid = left + (right - left) / 2;
 
-        // [CHẬM] Phải duyệt tìm node mid thay vì truy cập tức thì
+       
         NodeLaptop* midNode = LayNodeTaiViTri(dsls, mid);
 
         if (midNode == NULL) break;
@@ -774,7 +769,7 @@ Laptop* TimKiemNhiPhan_TheoTen(const DanhSachLaptop& dsls, const char tenCanTim[
         int res = strcmp(midNode->data.tenLaptop, tenCanTim);
 
         if (res == 0) {
-            return &midNode->data; // Tìm thấy
+            return &midNode->data; 
         }
 
         if (res < 0) {

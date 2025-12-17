@@ -147,7 +147,7 @@ void MenuNhanVien() {
 }
 
 void XuLyDangNhap() {
-    // 1. KHOI TAO ADMIN MAC DINH (Giu nguyen)
+    // 1. KHOI TAO ADMIN MAC DINH 
     if (g_dsTaiKhoan.soLuong == 0) {
         NhanVien nv;
         strcpy_s(nv.maNV, "NV001");
@@ -198,7 +198,7 @@ void XuLyDangNhap() {
     while (true) {
         system("cls");
         cout << "======= DANG NHAP HE THONG (ARRAY VERSION) =======" << endl;
-        cout << "(Go '0' o Ten dang nhap de LUU VA THOAT)\n"; // Sửa lại câu thông báo cho đúng ngữ cảnh
+        cout << "(Go '0' o Ten dang nhap de LUU VA THOAT)\n"; 
         cout << "--------------------------------------------------\n";
 
         cout << "Ten dang nhap: ";

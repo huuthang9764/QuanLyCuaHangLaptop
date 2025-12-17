@@ -5,11 +5,10 @@
 #include <ctime>
 #include <cstring>
 #include <string> 
-#include <cstdio> // Thêm để dùng sprintf_s
-
+#include <cstdio> 
 using namespace std;
 
-const int TABLE_WIDTH = 110; // Tăng độ rộng bảng vì thêm cột Serial
+const int TABLE_WIDTH = 110; 
 
 // =================== HÀM HỖ TRỢ ===================
 
@@ -43,7 +42,7 @@ void InTieuDeBaoHanh() {
         << setw(10) << "Ma HD"
         << setw(12) << "Ma Laptop"
         << setw(12) << "Ma Khach"
-        << setw(15) << "Serial"     // <--- CỘT MỚI
+        << setw(15) << "Serial"     
         << setw(18) << "Ngay Mua"
         << setw(18) << "Het Han"
         << setw(15) << "Trang Thai" << endl;
@@ -62,7 +61,7 @@ void InMotDongBaoHanh(const BaoHanh& bh) {
         << setw(10) << bh.maHD
         << setw(12) << bh.maLaptop
         << setw(12) << bh.maKH
-        << setw(15) << bh.serial  // <--- IN SERIAL
+        << setw(15) << bh.serial  
         << setw(18) << ngayMuaStr
         << setw(18) << hetHanStr
         << setw(15) << KiemTraTrangThaiBH(bh.ngayHetHan)
@@ -74,8 +73,8 @@ void InMotDongBaoHanh(const BaoHanh& bh) {
 void TraCuuBaoHanhTheoSerial(const DanhSachBaoHanh& dsBH) {
     char serial[20];
     cout << "Nhap So Serial can kiem tra (Check Legit): ";
-    cin.ignore(); // Dọn dẹp bộ đệm
-    cin.getline(serial, 20); // Dùng getline để nhập chuỗi
+    cin.ignore(); 
+    cin.getline(serial, 20); 
 
     cout << "\nKET QUA TRA CUU SERIAL: " << serial << "\n";
     InTieuDeBaoHanh();

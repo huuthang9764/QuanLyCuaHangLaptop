@@ -2,7 +2,7 @@
 #ifndef UI_KHACHHANG_H
 #define UI_KHACHHANG_H
 
-#include "xuly.h" // Đã bao gồm thuvien.h (phiên bản mảng)
+#include "xuly.h" 
 
 // Menu chính quản lý khách hàng
 void MenuQuanLyKhachHang(DanhSachKhachHang& dsKH);

@@ -31,7 +31,7 @@ void XuatThongTinLaptop(const Laptop& lt) {
 }
 
 void XuatDanhSachLaptop(const DanhSachLaptop& dsls) {
-    if (dsls.soLuong == 0) { // [THAY ĐỔI]: Kiểm tra số lượng thay vì head == NULL
+    if (dsls.soLuong == 0) { 
         cout << "Danh sach Laptop rong.\n";
         return;
     }
@@ -45,7 +45,6 @@ void XuatDanhSachLaptop(const DanhSachLaptop& dsls) {
         << "| " << left << setw(12) << "Trang Thai" << " |\n";
     cout << "---------------------------------------------------------------------------------------------------\n";
 
-    // [THAY ĐỔI]: Duyệt mảng thay vì duyệt Node
     for (int i = 0; i < dsls.soLuong; i++) {
         XuatThongTinLaptop(dsls.ds[i]);
     }
@@ -78,7 +77,7 @@ void XemLaptopTheoThuongHieu(const DanhSachLaptop& dsls, const char maTH[10]) {
     cout << "\n=== DANH SACH LAPTOP THUONG HIEU: " << maTH << " ===\n";
     bool found = false;
     cout << "---------------------------------------------------------------------------------------------------\n";
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsls.soLuong; i++) {
         if (_stricmp(dsls.ds[i].maThuongHieu, maTH) == 0) {
             XuatThongTinLaptop(dsls.ds[i]);
@@ -93,7 +92,7 @@ void XemLaptopTheoLoai(const DanhSachLaptop& dsls, const char maLoai[10]) {
     cout << "\n=== DANH SACH LAPTOP LOAI: " << maLoai << " ===\n";
     bool found = false;
     cout << "---------------------------------------------------------------------------------------------------\n";
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsls.soLuong; i++) {
         if (_stricmp(dsls.ds[i].maLoai, maLoai) == 0) {
             XuatThongTinLaptop(dsls.ds[i]);
@@ -108,7 +107,7 @@ void XemLaptopTheoKhoangGia(const DanhSachLaptop& dsls, long long giaMin, long l
     cout << "\n=== DANH SACH LAPTOP GIA TU: " << giaMin << " - " << giaMax << " ===\n";
     bool found = false;
     cout << "---------------------------------------------------------------------------------------------------\n";
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsls.soLuong; i++) {
         if (dsls.ds[i].giaBan >= giaMin && dsls.ds[i].giaBan <= giaMax) {
             XuatThongTinLaptop(dsls.ds[i]);
@@ -124,7 +123,6 @@ void XemChiTietCauHinh(const DanhSachLaptop& dsls) {
     cout << "Nhap Ma Laptop can xem chi tiet: ";
     cin.getline(ma, 10);
 
-    // Hàm TimKiemLaptop vẫn trả về Laptop* nên logic bên dưới giữ nguyên
     Laptop* lt = TimKiemLaptop(dsls, ma);
     if (lt != NULL) {
         XuatCauHinhChiTiet(*lt);
@@ -143,7 +141,7 @@ void XemLaptopTheoCPU(const DanhSachLaptop& dsls) {
     cout << "\n=== KET QUA TIM KIEM: " << cpuCanTim << " ===\n";
     cout << "---------------------------------------------------------------------------------------------------\n";
     bool found = false;
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsls.soLuong; i++) {
         if (strstr(dsls.ds[i].cauHinh.CPU, cpuCanTim) != NULL) {
             XuatThongTinLaptop(dsls.ds[i]);
@@ -173,7 +171,7 @@ void XemLaptopTheoRAM(const DanhSachLaptop& dsls) {
     cout << "\n=== DANH SACH LAPTOP RAM " << LayChuoiRAM(ramCanTim) << " ===\n";
     cout << "---------------------------------------------------------------------------------------------------\n";
     bool found = false;
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsls.soLuong; i++) {
         if (dsls.ds[i].cauHinh.RAM == ramCanTim) {
             XuatThongTinLaptop(dsls.ds[i]);
@@ -203,7 +201,7 @@ void XemLaptopTheoSSD(const DanhSachLaptop& dsls) {
     cout << "\n=== DANH SACH LAPTOP SSD " << LayChuoiSSD(ssdCanTim) << " ===\n";
     cout << "---------------------------------------------------------------------------------------------------\n";
     bool found = false;
-    // [THAY ĐỔI]: Duyệt mảng
+
     for (int i = 0; i < dsls.soLuong; i++) {
         if (dsls.ds[i].cauHinh.SSD == ssdCanTim) {
             XuatThongTinLaptop(dsls.ds[i]);
@@ -218,7 +216,7 @@ void XemLaptopTheoSSD(const DanhSachLaptop& dsls) {
 
 void ChonThuongHieuTuMenu(const DanhSachThuongHieu& dsth, char* maOut) {
     cout << "\n--- CHON THUONG HIEU ---\n";
-    // [THAY ĐỔI]: Duyệt mảng Thương Hiệu
+
     for (int i = 0; i < dsth.soLuong; i++) {
         cout << (i + 1) << ". " << dsth.ds[i].tenThuongHieu
             << " (" << dsth.ds[i].maThuongHieu << ")" << endl;
@@ -233,14 +231,13 @@ void ChonThuongHieuTuMenu(const DanhSachThuongHieu& dsth, char* maOut) {
         }
     } while (chon < 1 || chon > dsth.soLuong);
 
-    // Lấy trực tiếp từ mảng theo chỉ số
     strcpy_s(maOut, 10, dsth.ds[chon - 1].maThuongHieu);
     cout << ">> Da chon: " << dsth.ds[chon - 1].tenThuongHieu << endl;
 }
 
 void ChonLoaiTuMenu(const DanhSachLoai& dsl, char* maOut) {
     cout << "\n--- CHON LOAI SAN PHAM ---\n";
-    // [THAY ĐỔI]: Duyệt mảng Loại
+
     for (int i = 0; i < dsl.soLuong; i++) {
         cout << (i + 1) << ". " << dsl.ds[i].tenLoai
             << " (" << dsl.ds[i].maLoai << ")" << endl;
@@ -255,7 +252,7 @@ void ChonLoaiTuMenu(const DanhSachLoai& dsl, char* maOut) {
         }
     } while (chon < 1 || chon > dsl.soLuong);
 
-    // Lấy trực tiếp từ mảng
+
     strcpy_s(maOut, 10, dsl.ds[chon - 1].maLoai);
     cout << ">> Da chon: " << dsl.ds[chon - 1].tenLoai << endl;
 }
@@ -264,7 +261,7 @@ Laptop NhapThongTinLaptop(const DanhSachThuongHieu& dsth, const DanhSachLoai& ds
     Laptop lt;
     char maTam[10];
 
-    // [THAY ĐỔI]: Kiểm tra số lượng
+
     if (dsth.soLuong == 0 || dsl.soLuong == 0) {
         cout << "LOI: Can co it nhat 1 Thuong Hieu va 1 Loai SP de them Laptop.\n";
         strcpy_s(lt.maLaptop, "ERROR");
@@ -368,13 +365,11 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
         switch (chon) {
         case '1': {
             cout << "--- 1. Them Laptop ---\n";
-            // [BENCHMARK] Buoc 1: Nhap lieu truoc (Khong tinh thoi gian)
             Laptop lt = NhapThongTinLaptop(dsth, dsl);
 
             if (strcmp(lt.maLaptop, "ERROR") != 0) {
                 bool ketQuaThem = false;
 
-                // [BENCHMARK] Buoc 2: Do thoi gian ham ThemLaptop
                 DoBenchmark("Thoi gian them: ", [&]() {
                     ketQuaThem = ThemLaptop(dsls, lt);
                     });
@@ -390,7 +385,7 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
             cout << "Nhap ma can xoa: "; cin.getline(ma, 10);
 
             bool ketQuaXoa = false;
-            // [BENCHMARK] Do thoi gian xoa
+
             DoBenchmark("Thoi gian xoa: ", [&]() {
                 ketQuaXoa = XoaLaptop(dsls, ma);
                 });
@@ -404,17 +399,17 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
             char ma[10];
             cout << "Nhap ma can sua: "; cin.getline(ma, 10);
 
-            // Kiem tra ton tai truoc khi nhap thong tin moi de tranh mat cong nhap
+
             if (TimKiemLaptop(dsls, ma) == NULL) {
                 cout << "Khong tim thay!\n";
             }
             else {
                 cout << "Nhap thong tin moi:\n";
-                Laptop ltMoi = NhapThongTinLaptop(dsth, dsl); // Nhap lieu ngoai Benchmark
-                strcpy_s(ltMoi.maLaptop, ma); // Giu nguyen ma cu
+                Laptop ltMoi = NhapThongTinLaptop(dsth, dsl);
+                strcpy_s(ltMoi.maLaptop, ma); 
 
                 bool ketQuaSua = false;
-                // [BENCHMARK] Do thoi gian sua (Ghi de du lieu)
+
                 DoBenchmark("Thoi gian cap nhat: ", [&]() {
                     ketQuaSua = SuaLaptop(dsls, ltMoi);
                     });
@@ -430,7 +425,7 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
             cin.getline(ma, 10);
 
             Laptop* ketQua = nullptr;
-            // [BENCHMARK] Da co tu truoc
+
             DoBenchmark("Thoi gian tim kiem: ", [&]() {
                 ketQua = TimKiemLaptop(dsls, ma);
                 });
@@ -445,7 +440,7 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
             break;
         }
         case '5': {
-            // [BENCHMARK] Do thoi gian duyet mang va in
+
             DoBenchmark("Thoi gian hien thi toan bo: ", [&]() {
                 XuatDanhSachLaptop(dsls);
                 });
@@ -482,7 +477,6 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
             break;
         }
         case '8': {
-            // Hien thi menu
             for (int i = 0; i < dsth.soLuong; i++) {
                 cout << dsth.ds[i].maThuongHieu << ": " << dsth.ds[i].tenThuongHieu << ", ";
             }
@@ -502,7 +496,6 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
             cout << endl;
             char ma[10]; cout << "Nhap Ma Loai: "; cin.getline(ma, 10);
 
-            // [BENCHMARK] Do thoi gian loc
             DoBenchmark("Thoi gian loc theo Loai: ", [&]() {
                 XemLaptopTheoLoai(dsls, ma);
                 });
@@ -515,7 +508,6 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
             cout << "Nhap gia max: "; cin >> max;
             cin.ignore(1000, '\n');
 
-            // [BENCHMARK] Do thoi gian loc theo gia
             DoBenchmark("Thoi gian loc khoang gia: ", [&]() {
                 XemLaptopTheoKhoangGia(dsls, min, max);
                 });
@@ -523,30 +515,16 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
         }
         case 'b':
         case 'B': {
-            // Ham XemLaptopTheoCPU co cin ben trong, ta can tach ra mot chut
-            // De toi uu, ban nen sua ham XemLaptopTheoCPU nhan tham so la chuoi
-            // Nhung o day toi se goi nguyen ham vi ham do cung don gian.
-            // Tuy nhien de do chinh xac, toi se phai lay input o ngoai.
-            // O day toi giu nguyen call ham vi ham nay tu lay input roi in.
-            // Neu muon do chinh xac, can viet lai ham XemLaptopTheoCPU tach input ra.
-
-            // Cach lam nhanh: Goi truc tiep nhung thoi gian se bao gom ca luc ban go ten CPU.
-            // De khac phuc, toi se code lai doan input o day:
 
             char cpuCanTim[30];
             cout << "\n--- TIM KIEM THEO CPU ---\n";
             cout << "Nhap ten CPU (vd: i5, i7, Ryzen): ";
             cin.getline(cpuCanTim, 30);
 
-            // [BENCHMARK] Sau khi da nhap xong moi do:
-            // Luu y: Ban can sua lai ham XemLaptopTheoCPU de nhan tham so, 
-            // hoac chung ta tu viet logic loc lai o day de test.
-            // De don gian cho ban copy, toi se goi ham cu, chap nhan viec no se hoi lai input
-            // hoac toi su dung logic tim kiem truc tiep tai day:
 
             DoBenchmark("Thoi gian tim CPU: ", [&]() {
                 cout << "\n=== KET QUA TIM KIEM: " << cpuCanTim << " ===\n";
-                // Copy logic duyet mang
+
                 bool found = false;
                 for (int i = 0; i < dsls.soLuong; i++) {
                     if (strstr(dsls.ds[i].cauHinh.CPU, cpuCanTim) != NULL) {
@@ -560,7 +538,6 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
         }
         case 'c':
         case 'C': {
-            // Xem chi tiet cau hinh theo Ma
             char ma[10];
             cout << "Nhap Ma Laptop can xem chi tiet: ";
             cin.getline(ma, 10);
@@ -586,7 +563,6 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
         }
         case 'e':
         case 'E': {
-            // Tuong tu nhu RAM
             DoBenchmark("Thoi gian Loc SSD (gom input): ", [&]() {
                 XemLaptopTheoSSD(dsls);
                 });
@@ -599,160 +575,3 @@ void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, cons
         if (chon != '0') system("pause");
     } while (chon != '0');
 }
-//void MenuQuanLyLaptop(DanhSachLaptop& dsls, const DanhSachThuongHieu& dsth, const DanhSachLoai& dsl) {
-//    char chon;
-//    do {
-//        system("cls");
-//        cout << "======= QUAN LY LAPTOP & KHO (Array Version) =======\n";
-//        cout << "1. Them Laptop moi\n";
-//        cout << "2. Xoa Laptop\n";
-//        cout << "3. Sua thong tin Laptop\n";
-//        cout << "4. Tim kiem Laptop (theo Ma)\n";
-//        cout << "5. In danh sach Laptop\n";
-//        cout << "6. Sap xep Laptop (theo Ten)\n";
-//        cout << "7. Nhap Kho (Cong don so luong)\n";
-//        cout << "8. Xem Laptop theo Hang\n";
-//        cout << "9. Xem Laptop theo Loai\n";
-//        cout << "a. Xem Laptop theo Khoang Gia\n";
-//        cout << "b. Xem Laptop theo CPU\n";
-//        cout << "c. Xem Chi Tiet Cau Hinh (Theo Ma)\n";
-//        cout << "d. Loc theo RAM\n";
-//        cout << "e. Loc theo SSD\n";
-//        cout << "0. Quay lai\n";
-//        cout << "====================================================\n";
-//        cout << "Chon: ";
-//        chon = _getch();
-//
-//        system("cls");
-//
-//        switch (chon) {
-//        case '1': {
-//            cout << "--- 1. Them Laptop ---\n";
-//            Laptop lt = NhapThongTinLaptop(dsth, dsl);
-//            if (strcmp(lt.maLaptop, "ERROR") != 0) {
-//                if (ThemLaptop(dsls, lt)) cout << "Them thanh cong!\n";
-//                else cout << "Loi: Khong them duoc (Da day hoac trung ma)!\n";
-//            }
-//            break;
-//        }
-//        case '2': {
-//            cout << "--- 2. Xoa Laptop ---\n";
-//            char ma[10]; cout << "Nhap ma can xoa: "; cin.getline(ma, 10);
-//            if (XoaLaptop(dsls, ma)) cout << "Da xoa!\n";
-//            else cout << "Khong tim thay!\n";
-//            break;
-//        }
-//        case '3': {
-//            cout << "--- 3. Sua Laptop ---\n";
-//            char ma[10]; cout << "Nhap ma can sua: "; cin.getline(ma, 10);
-//            if (TimKiemLaptop(dsls, ma) == NULL) {
-//                cout << "Khong tim thay!\n";
-//            }
-//            else {
-//                cout << "Nhap thong tin moi:\n";
-//                Laptop ltMoi = NhapThongTinLaptop(dsth, dsl);
-//                strcpy_s(ltMoi.maLaptop, ma);
-//                if (SuaLaptop(dsls, ltMoi)) cout << "Da cap nhat!\n";
-//            }
-//            break;
-//        }
-//        case '4': {
-//            cout << "\n--- 4. Tim kiem Laptop (ARRAY) ---\n";
-//            char ma[10];
-//            cout << "Nhap ma can tim: ";
-//            cin.getline(ma, 10);
-//          
-//            Laptop* ketQua = nullptr;
-//            DoBenchmark("Thoi gian tim kiem: ", [&]() {
-//                ketQua = TimKiemLaptop(dsls, ma);   
-//                });
-//       
-//            if (ketQua) {
-//                cout << ">> TIM THAY:\n";
-//                XuatThongTinLaptop(*ketQua);
-//            }
-//            else {
-//                cout << ">> Khong tim thay!\n";
-//            }
-//            break;
-//        }
-//        case '5': XuatDanhSachLaptop(dsls); break;
-//        case '6': {
-//            char subChon;
-//            cout << "\n--- SAP XEP DANH SACH LAPTOP ---\n";
-//            cout << "1. Sap xep theo Ten (A-Z)\n";
-//            cout << "2. Sap xep theo Gia Ban (Tang dan)\n"; 
-//            cout << "Chon: ";
-//            subChon = _getch();
-//
-//            if (subChon == '1') {
-//                SapXepLaptop_TheoTen(dsls);
-//                cout << "\n>> Da sap xep theo Ten!\n";
-//            }
-//            else if (subChon == '2') {
-//                SapXepLaptop_TheoGia(dsls);
-//                cout << "\n>> Da sap xep theo Gia!\n";
-//            }
-//            else {
-//                cout << "\n>> Huy sap xep.\n";
-//            }
-//
-//            XuatDanhSachLaptop(dsls);
-//            break;
-//        }
-//        case '7': XuLyNhapKho(dsls); break;
-//        case '8': {
-//            for (int i = 0; i < dsth.soLuong; i++) {
-//                cout << dsth.ds[i].maThuongHieu << ": " << dsth.ds[i].tenThuongHieu << ", ";
-//            }
-//            cout << endl;
-//            char ma[10]; cout << "Nhap Ma Thuong Hieu: "; cin.getline(ma, 10);
-//            XemLaptopTheoThuongHieu(dsls, ma);
-//            break;
-//        }
-//        case '9': {
-//            for (int i = 0; i < dsl.soLuong; i++) {
-//                cout << dsl.ds[i].maLoai << ": " << dsl.ds[i].tenLoai << ", ";
-//            }
-//            cout << endl;
-//            char ma[10]; cout << "Nhap Ma Loai: "; cin.getline(ma, 10);
-//            XemLaptopTheoLoai(dsls, ma);
-//            break;
-//        }
-//        case 'a':
-//        case 'A': {
-//            long long min, max;
-//            cout << "Nhap gia min: "; cin >> min;
-//            cout << "Nhap gia max: "; cin >> max;
-//            cin.ignore(1000, '\n');
-//            XemLaptopTheoKhoangGia(dsls, min, max);
-//            break;
-//        }
-//        case 'b':
-//        case 'B': {
-//            XemLaptopTheoCPU(dsls);
-//            break;
-//        }
-//        case 'c':
-//        case 'C': {
-//            XemChiTietCauHinh(dsls);
-//            break;
-//        }
-//        case 'd':
-//        case 'D': {
-//            XemLaptopTheoRAM(dsls);
-//            cin.ignore(1000, '\n');
-//            break;
-//        }
-//        case 'e':
-//        case 'E': {
-//            XemLaptopTheoSSD(dsls);
-//            cin.ignore(1000, '\n');
-//            break;
-//        }
-//        case '0': break;
-//        default: cout << "Chon sai!\n"; break;
-//        }
-//        if (chon != '0') system("pause");
-//    } while (chon != '0');
-//}
